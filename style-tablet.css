@@ -1,0 +1,29 @@
+@media (min-width: 768px) and (max-width: 1100px) {
+    .content {
+        
+        position: absolute;
+        top: 40pt;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin:0;
+        height: unset;
+        
+    }
+
+    .messages{
+        min-width: 300px;
+    }
+
+    .persons{
+        min-width: 350px;
+    }
+
+    .footer {
+        display: none;
+    }
+
+    .messages__input-send-btn>i{
+        margin-left: 7pt;
+    }
+}

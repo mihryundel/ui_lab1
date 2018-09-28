@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style-tablet.css">
+    <link rel="stylesheet" href="style-smartphones.css">
+    <link href="https://fonts.googleapis.com/css?family=Nixie+One" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Poiret+One" rel="stylesheet">
+    <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>Уютный чат</title>
+</head>
+
+<body>
+    <div class="header" v-if="showMenu">
+
+        <div class="header__menu">
+            <div class="header__logo">
+                <i class="material-icons">chat</i>
+            </div>
+            <div class="header__menu-item _active">Чаты</div>
+            <div class="header__menu-item">Группы</div>
+            <div class="header__menu-item">Встречи</div>
+            <div class="header__menu-item">Контакты</div>
+            <div class="header__menu-item">Поиск</div>
+            <div class="header__menu-item">Статистика</div>
+        </div>
+        <div class="header__profile">
+            <div class="header__profile-name">Артем Дзюба</div>
+            <div class="header__profile-image">
+                <img src="./images/dzyba.jpg" alt="">
+            </div>
+        </div>
+    </div>
+    <div class="content" id="app">
+        <div class="persons" :class="{ '_active': !personSelected}">
+            <div class="persons__header" v-show="!showMessages() || !isMobile()">
+                <div class="header__menu-mobile-btn" @click="showMenu = true">
+                    <i class="material-icons">menu</i>
+                </div>
+
+                <div class="header__logo">
+                    <i class="material-icons">chat</i>
+                </div>
+                Диалоги
+            </div>
+            <div class="persons__content">
+
+
+                <div class="person" :class="{'_active' : person.name === selectedPerson.name}" @click="onSelectPerson(person)" v-for="person in persons">
+                    <div class="person__avatar">
+                        <img :src="person.avatar" alt="">
+                        <div class="person__message-counter" v-if="person.unreadMessagesCounter > 0">
+                            {{person.unreadMessagesCounter}}
+                        </div>
+                    </div>
+                    <div class="person__info">
+                        <div class="person__info-name">
+                            {{person.name}}
+                        </div>
+                        <div class="person__info-last-massage">
+                            {{person.messages[person.messages.length-1].content}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="messages" :class="{ '_active' : personSelected}">
+            <div class="messages__header">
+                <div class="messages__header-back" @click="unselectPerson()">
+                    <i class="material-icons">arrow_back</i>
+                </div>
+                <div class="messages__header-title">
+                    {{selectedPerson.name}}
+                </div>
+                <div class="messages__header-menu">
+                    <i class="material-icons">more_horiz</i>
+                </div>
+            </div>
+            <div class="messages__content">
+                <div class="message" v-for="message in activeMessages" :class="{'_my': message.isMine}">
+                    <div class="message__time">{{message.date}}</div>
+                    {{message.content}}
+                    <div class="message__attachment" v-if="message.attachment">
+                        <i class="material-icons">attachment</i>
+                        <a :href="message.attachment.content">{{message.attachment.previewText}}</a>
+                    </div>
+                </div>
+
+            </div>
+            <div class="messages__input" :class="{'_hide-mobile-input' : !personSelected}">
+                <div class="messages__input-smiles-btn">
+                    <i class="material-icons">insert_emoticon</i>
+                </div>
+                <div class="messages__input-field">
+                    <input type="text" placeholder="Введите текст сообщения">
+                </div>
+                <div class="messages__input-send-btn">
+                    <i class="material-icons">send</i>
+                </div>
+            </div>
+        </div>
+        <div class="mobile-menu" v-if="showMenu">
+            <div class="mobile-menu__info">
+                <div class="logo">
+                    <i class="material-icons">chat</i> Chat App
+                </div>
+
+                <div class="close" @click="toggleMenu()">
+                    <i class="material-icons">close</i>
+                </div>
+            </div>
+
+            <div class="menu-item _active">Чаты</div>
+            <div class="menu-item">Группы</div>
+            <div class="menu-item">Встречи</div>
+            <div class="menu-item">Контакты</div>
+            <div class="menu-item">Поиск</div>
+            <div class="menu-item">Статистика</div>
+            <div class="menu-item">Помощь</div>
+            <div class="menu-item">Обратная связь</div>
+            <div class="menu-item">Справка</div>
+        </div>
+    </div>
+    <div class="footer">
+        <div class="footer__menu">
+            <a href="#">Помощь</a>
+            <a href="#">Обратная связь</a>
+            <a href="#">Справка</a>
+        </div>
+        <div class="footer__date">
+            2018 © Все права защищены
+        </div>
+
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>

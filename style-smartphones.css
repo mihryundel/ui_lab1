@@ -1,0 +1,191 @@
+@media (min-width: 0px) and (max-width: 760px) {
+    body {
+        display: block;
+        background-color: var(--text-primary-color);
+    }
+    .content {
+        display: block;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: -20pt;
+        margin: 0;
+        height: unset;
+        border: unset;
+    }
+    .messages {
+        min-width: 300px;
+    }
+    .persons {
+        min-width: 350px;
+    }
+    .footer {
+        display: none;
+    }
+    .messages__input-send-btn>i {
+        margin-left: 7pt;
+    }
+    .persons__header,
+    .messages__header {
+        background-color: var(--darkpimary-color);
+        color: var(--text-primary-color);
+        position: relative;
+    }
+    .persons__header {
+        position: fixed;
+        top: 0;
+        z-index: 6;
+    }
+    .messages__header {
+        position: fixed;
+        top: 0;
+        z-index: 2;
+    }
+    .messages__header {
+        z-index: 4;
+    }
+    .persons__header>.header__logo {
+        display: flex;
+    }
+    .persons__content {
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        top: 30pt;
+        z-index: 1;
+        /* display: none; */
+    }
+    .person._active {
+        box-shadow: unset;
+        background-color: unset;
+        color: var(--primary-text-color);
+        z-index: 1;
+    }
+    .person._active .person__info-last-massage {
+        color: var(--primary-text-color);
+    }
+    .person__info-last-massage {
+        max-width: 170px;
+    }
+    .person {
+        min-width: unset;
+    }
+    .messages {
+        min-width: unset;
+        position: absolute;
+        top: 30pt;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        width: unset;
+        z-index: 3;
+        background-color: var(--text-primary-color);
+    }
+    .person:hover {
+        box-shadow: unset;
+    }
+    .messages__header-back {
+        display: flex;
+        padding: 5pt;
+        cursor: pointer;
+    }
+    .messages__header-menu {
+        color: var(--text-primary-color);
+        padding: 5pt;
+    }
+    .messages__input {
+        position: fixed;
+        bottom: 0;
+        WIDTH: 100%;
+        PADDING-BOTTOM: 7PT;
+        background-color: var(--text-primary-color);
+    }
+    .messages__content {
+        height: calc(100% - 51pt);
+    }
+    .header__menu-mobile-btn {
+        color: var(--text-primary-color);
+        display: flex;
+        position: absolute;
+        z-index: 99;
+        top: 6pt;
+        left: 6pt;
+    }
+
+    .header{
+        display: none;
+    }
+
+    .mobile-menu{
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top:0;
+        bottom: -40pt;
+        left: 0;
+        right: 40pt;
+        z-index: 900;
+        background-color: var(--text-primary-color);
+        overflow: hidden;
+        box-shadow: 11px -1px 20px 0px rgba(117, 117, 117, 0.5)
+    }
+
+    .mobile-menu>.mobile-menu__info{
+        background-color: var(--accent-color);
+        height: 50pt;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: center;
+        position: relative;
+
+    }
+
+    .mobile-menu>.menu-item{
+        display: flex;
+        padding: 10pt;
+        align-items: center;
+        border-bottom: 1pt solid var( --divider-color);
+    }
+    .mobile-menu>.menu-item._active{
+        background-color: var(--darkpimary-color);
+        color: var(--text-primary-color);
+    }
+    .logo{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: var(--text-primary-color);
+    }
+
+    .logo>i {
+        margin-right: 5pt;
+    }
+
+    .close {
+        position: absolute;
+        top:10pt;
+        right: 10pt;
+    }
+
+    .persons._active {
+        
+    }
+
+    .persons._active>.persons__header {
+        z-index: 90;
+    }
+
+    .persons._active>.persons__content {
+        z-index: 89;
+        background-color:var(--text-primary-color); 
+    }
+
+    ._hide-mobile-input{
+        display: none;
+    }
+
+
+}
